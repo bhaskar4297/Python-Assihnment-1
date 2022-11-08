@@ -1,2 +1,2 @@
-# Python-Assihnment-1
+# Python-Assignment-1
 Solutions
