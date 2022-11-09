@@ -3,7 +3,7 @@ Q1. Why do we call Python as a general purpose and high-level programming langua
 Ans because here we are writing everithing in human readable form.
 
 Q2. Why is Python called a dynamically typed language?
-Ans.It is dynamically typed language because we dont have to assign type of data while writing the code. it is determined by compiler at time of excecution.
+Ans.It is dynamically typed language because we dont have to assign type of variable while writing the code. it is determined by compiler at time of excecution.
 
 Q3. List some pros and cons of Python programming language?
 Ans. Pros                                           cons :
