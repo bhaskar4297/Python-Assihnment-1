@@ -16,7 +16,7 @@ Ans In todays time it is highly used and recoganised language in the world. As i
     Eg: Data science, AI, Machine learning, application development, game development, embedded systems
 
 Q5. What are variable and how can we declare them?
-Ans : variable are name assign to specific memory location. There is no such commant to declare it.Tt is created by simply assigning the value to it.
+Ans : variable are name assign to specific memory location. There is no such command to declare it.It is created by simply assigning the value to it.
 
 Q6. How can we take an input from the user in Python?
 ans : By using input() function
@@ -33,16 +33,16 @@ eg: suppose we have to convert int() type to float() then,
 
 
 Q9. Can we take more than one input from the user using single input() function? If yes, how? If no, why?
-Ans As far as i have studied i don't know. There might be some functions because pythone is vast.
+Ans As far as i have studied i don't know. There might be some functions because python is vast.
 
 Q10. What are keywords?
-Ans: keywords are reserved words which is predefines in python. we cannot use it as a variable name.
+Ans: keywords are reserved words which is predefined in python. we cannot use it as a variable name.
 
 Q11. Can we use keywords as a variable? Support your answer with reason.
 Ans: No, because keywords have predefines meaning.
 
 Q12. What is indentation? What's the use of indentaion in Python?
-Ans: i dont know.
+Ans: It is a spaces before any code. It is used in program to make it look good
 
 Q13. How can we throw some output in Python?
 Ans: by print() function
