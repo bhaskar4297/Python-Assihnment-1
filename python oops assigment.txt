@@ -58,7 +58,7 @@ class Employee():
 		print(f"My name is {self.name} and I am from {self.country}, working at {Employee.company_name}")
 		
 # Creating instance/object
-emp_1 = Employee('Vivek', 'India')
+emp_1 = Employee('Bhaskar', 'India')
 emp_1.display()
 ```
 
