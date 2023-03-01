@@ -1,5 +1,3 @@
-
-
 1. Download vechile sales data -> https://github.com/shashank-mishra219/Hive-Class/blob/main/hive_class_3_assignment.txt
 
 2. Copied the 'sales_order_csv' data from linux machine to hdfs by the following command:
@@ -34,10 +32,6 @@ tblproperties("skip.header.line.count"="1");
 
         from sales_order_data insert overwrite table sales_order_data_orc select *;
 
-
-Perform below menioned queries on "sales_order_orc" table :
-
-
 a. Calculate total sales per year
 
 
@@ -51,16 +45,6 @@ b. Find a product for which maximum orders were placed
         group by product_code
         order by total_order_per_product_code desc
         limit 1;
-
-        or 
-
-        select MAX(x.total_order_per_product_code)
-        from(
-        select product_code, count(order_number) as total_order_per_product_code
-        from sales_order_data_orc
-        group by product_code
-        order by total_order_per_product_code desc) x;
-
 
 c. Calculate the total sales for each quarter
 
@@ -78,45 +62,25 @@ d. In which quarter sales was minimum
         order by qtr_id
         limit 1;
 
-
-
 e. In which country sales was maximum and in which country sales was minimum
 
-        (select country, ROUND(SUM(sales), 3) as sales_for_this_country
+        select country, ROUND(SUM(sales), 3) as sales_for_this_country
         from sales_order_data_orc
         group by country
-        order by sales_for_this_country desc limit 1)
-
+        order by sales_for_this_country desc limit 1
         UNION ALL
-
-        (select country, ROUND(SUM(sales), 3) as sales_for_this_country
+        select country, ROUND(SUM(sales), 3) as sales_for_this_country
         from sales_order_data_orc
         group by country
-        order by sales_for_this_country limit 1);
-
-        or
-	
-	select country, x.sales_for_countries,
-	row_number() over(partition by country order by sales_for_countries desc)
-	from(select country, 
-	SUM(sales) as sales_for_countries
-	from sales_order_data_orc
-	group by country)x;
-
-
+        order by sales_for_this_country limit 1;
+        
 f. Calculate quartelry sales for each city
 
         select city, qtr_id, ROUND(SUM(sales), 3) as total_sales_per_quarter_for_city
         from sales_order_data_orc
         group by city, qtr_id
         order by city, qtr_id;
-
-        select country, ROUND(SUM(sales), 3) as total_sales_per_country
-        from sales_order_data_orc
-        group by country
-        order by total_sales_per_country;
-
-
+       
 h. Find a month for each year in which maximum number of quantities were sold
 
         with x as (select year_id, month_id, sum(quantity_ordered) as quantity
@@ -128,67 +92,4 @@ h. Find a month for each year in which maximum number of quantities were sold
         from x)
 
         select year_id, month_id, quantity as quantities_sold
-        from y where ranking = 1;
-
-        or
-
-        select year_id, month_id, x.quantity
-        from (select distinct month_id, year_id, sum(quantity_ordered) as quantity,
-        row_number() over (partition by year_id order by quantity desc) as rn
-        from sales_order_data_orc)x
-        where x.rn = 1;
-
-        or 
-
-        select * from (
-        select x.year_id, x. month_id, x.quantity,
-        row_number() over(partition by x.year_id order by x.year_id, x.quantity desc) ranking
-        from
-        (select year_id, month_id, sum(quantity_ordered) as quantity
-        from sales_order_data_orc
-        group by year_id, month_id) x)y
-        where y.ranking = 1;
-
-        or
-
-         select year_id, month_id,quantity_ordered, rnk  from 
-         (select year_id, month_id,quantity_ordered,
-         dense_rank() over(partition by year_id order by quantity_ordered desc) as rnk
-         from sales_order_data_orc)a where a.rnk = 1;                                                                                                                                 
-        
-                                                                                                                                    
-                                                                                                                               
-                                                                                                                                 
-        
-                                                                                                                                   
-                                                                                                                               
-                                                                                                                                 
-        
-                                                                                                                                    
-                                                                                                                               
-        
-                                                                                                                               
-        
-                                                                                                                               
-                                                                                                                               
-                                                                                                                                 
-        
-
-
-
-                                                                                                                                 
-                                                                                                                            
-                                                                                                                              
-     
-                                                                                                                                 
-                                                                                                                            
-                                                                                                                              
-     
-                                                                                                                                 
-                                                                                                                            
-     
-                                                                                                                            
-     
-                                                                                                                            
-                                                                                                                            
-                                                                                                                              
+        from y where ranking = 1;                                                                                                                   
