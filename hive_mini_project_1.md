@@ -9,13 +9,13 @@ Note: both files are csv files.
 
 1. Create a schema based on the given dataset
 
-#create database
+--create database
 
 create database hive_final_min_project_1;
 
 use hive_final_min_project_1;
 
-#create table AgentLogingReport
+--create table AgentLogingReport
 
 Create table AgentLogingReport
 (
@@ -31,7 +31,7 @@ fields terminated by ','
 tblproperties ("skip.header.line.count" = "1");
 
 
-#create table AgentPerformance
+--create table AgentPerformance
 
 Create table AgentPerformance
 (
@@ -51,10 +51,10 @@ tblproperties ("skip.header.line.count" = "1");
 
 2. Dump the data inside the hdfs in the given schema location.
 
-#load data into AgentLogingReport table
+--load data into AgentLogingReport table
 load data local inpath '/home/cloudera/AgentLogingReport.csv' into table AgentLogingReport;
 
-#load data into AgentPerformance table
+--load data into AgentPerformance table
 load data local inpath '/home/cloudera/AgentPerformance.csv' into table AgentPerformance;
 
 
